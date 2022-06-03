@@ -38,7 +38,7 @@ jobs:
           path: target/release/actions-playground.exe
   publish:
     needs: test-build
-    if: startsWith(github.ref, 'refs/tags/v') || contains(github.event.push.head_commit.message, '!citestrun')
+    if: startsWith(github.ref, 'refs/tags/v') || contains(github.event.head_commit.message, '!citestrun')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/download-artifact@v3

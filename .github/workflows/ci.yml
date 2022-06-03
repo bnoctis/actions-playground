@@ -1,6 +1,9 @@
 name: build-test-release
 
-on: push
+on:
+  push:
+    tags:
+      - v*
 
 env:
   CARGO_TERM_COLOR: always
@@ -45,13 +48,11 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/download-artifact@v3
-        with:
-          name: actions-playground-*
       - name: List downloaded artifacts
-        run: ls -la
+        run: ls -Rla
       - run: echo Released ${{ github.sha }} > RELEASE-NOTES.txt
       - name: Publish GitHub release
         uses: softprops/action-gh-release@v1
         with:
           body_path: ${{ github.workspace }}/RELEASE-NOTES.txt
-          files: actions-playground-*
+          files: '**/actions-playground-*'

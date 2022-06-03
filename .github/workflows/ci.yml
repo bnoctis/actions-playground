@@ -23,7 +23,8 @@ jobs:
       - name: cargo build --release
         uses: actions-rs/cargo@v1
         with:
-          command: build --release
+          command: build
+          args: --release
       - name: Upload for release
         uses: actions/upload-artifact@v3
         with:

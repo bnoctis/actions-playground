@@ -37,7 +37,7 @@ jobs:
         with:
           name: actions-playground-*
       - name: List downloaded artifacts
-        runs: ls -la
+        run: ls -la
       - name: Publish GitHub release
         uses: softprops/action-gh-release@v1
         with:

@@ -53,4 +53,4 @@ jobs:
         with:
           body_path: ${{ github.workspace }}/RELEASE-NOTES.txt
           # download-artifact puts artifacts in separate directories if no name specified
-          files: 'actions-playground-*/actions-playground-*'
+          files: 'actions-playground-*/actions-playground*'

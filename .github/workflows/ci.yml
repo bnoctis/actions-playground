@@ -43,7 +43,7 @@ jobs:
     steps:
       - uses: actions/download-artifact@v3
         with:
-          name: artifacts
+          path: artifacts
       - name: List downloaded artifacts
         run: ls -Rla
       - run: echo Released ${{ github.ref_name }} > RELEASE-NOTES.txt

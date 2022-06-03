@@ -28,13 +28,13 @@ jobs:
       - name: Upload for release
         uses: actions/upload-artifact@v3
         with:
-          name: actions-playground-${{ runner.os }}-${{ runner.arch }}
+          name: artifacts/actions-playground-${{ runner.os }}-${{ runner.arch }}
           path: target/release/actions-playground
       - name: Upload for release, Windows
         uses: actions/upload-artifact@v3
         if: ${{ runner.os == 'Windows' }}
         with:
-          name: actions-playground-${{ runner.os }}-${{ runner.arch }}.exe
+          name: artifacts/actions-playground-${{ runner.os }}-${{ runner.arch }}.exe
           path: target/release/actions-playground.exe
   publish:
     needs: test-build

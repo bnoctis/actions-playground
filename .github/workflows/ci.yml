@@ -50,9 +50,10 @@ jobs:
       - uses: actions/download-artifact@v3
       - name: List downloaded artifacts
         run: ls -Rla
-      - run: echo Released ${{ github.sha }} > RELEASE-NOTES.txt
+      - run: echo Released ${{ github.ref_name }} > RELEASE-NOTES.txt
       - name: Publish GitHub release
         uses: softprops/action-gh-release@v1
         with:
           body_path: ${{ github.workspace }}/RELEASE-NOTES.txt
-          files: '**/actions-playground-*'
+          # download-artifact puts artifacts in separate directories if no name specified
+          files: 'actions-playground-*/actions-playground-*'

@@ -2,8 +2,8 @@ name: build-test-release
 
 on:
   push:
-    tags:
-      - v*
+    branch: '*'
+    tags: v*
 
 env:
   CARGO_TERM_COLOR: always

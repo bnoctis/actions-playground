@@ -41,10 +41,12 @@ jobs:
           path: target/release/actions-playground.exe
   publish:
     needs: test-build
-    if: startsWith(github.ref, 'refs/tags/v')
+    if: startsWith(github.ref, 'refs/tags/v') || contains(github.event.commits.*.message, '!citestrun')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/download-artifact@v3
+        with:
+          name: artifacts
       - name: List downloaded artifacts
         run: ls -Rla
       - run: echo Released ${{ github.ref_name }} > RELEASE-NOTES.txt
@@ -53,4 +55,4 @@ jobs:
         with:
           body_path: ${{ github.workspace }}/RELEASE-NOTES.txt
           # download-artifact puts artifacts in separate directories if no name specified
-          files: 'actions-playground-*/actions-playground*'
+          files: 'artifacts/actions-playground*'
